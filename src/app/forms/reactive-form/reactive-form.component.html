@@ -1,0 +1,9 @@
+<form [formGroup]="userForm">
+    <input type="text" formControlName="name" required name="name">
+</form>
+
+@if (userForm.invalid) {
+    @if(userForm.controls['name'].hasError('required')) {
+        <p>Por favor, ingresa tu nombre</p>
+    }
+}

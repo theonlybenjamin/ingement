@@ -1,0 +1,11 @@
+<div>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <input type="text" required name="name" [(ngModel)]="user.name" #name="ngModel" placeholder="Ingresa tu nombre">
+        <button type="submit" [disabled]="form.invalid">Enviar</button>
+    </form>
+</div>
+@if (form.invalid && (form.dirty && form.touched)) {
+    @if (name.errors!['required']) {
+        <p>Por favor, ingresa tu nombre</p>
+    }
+}
