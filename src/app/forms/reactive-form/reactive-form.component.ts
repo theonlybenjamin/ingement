@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-reactive-form',
@@ -16,6 +17,10 @@ export class ReactiveFormComponent {
   });
 
   constructor() {
-    this.userForm.valueChanges.subscribe(cambiosDelFormulario => console.log(cambiosDelFormulario))
+    this.userForm.valueChanges.pipe(
+      map(cambiosDelFormulario => cambiosDelFormulario.name)
+    ).subscribe(cambiosDelFormulario => {
+      console.log(cambiosDelFormulario);
+    })
   }
 }
